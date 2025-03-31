@@ -19,4 +19,8 @@ export type TreeNode = {
    * Optional event handlers associated with the node.
    */
   children?: TreeNode[]
+  /**
+   * Optional flag indicating if the node is active.
+   */
+  active?: boolean
 }
