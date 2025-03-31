@@ -1,9 +1,15 @@
-import { useState } from 'react'
-import { TreeNodeViewer } from './components'
+import { JSX, useState } from 'react'
+import { SidePanel, TreeNodeViewer } from './components'
 import { mockTree, TreeNode } from './data'
 import './App.css'
 
-function App () {
+/**
+ * App component serves as the main entry point for the TreeBugger application.
+ * It initializes the state for the active node and handles node selection.
+ * 
+ * @returns {JSX.Element} The rendered App component.
+ */
+function App (): JSX.Element {
   const [activeNode, setActiveNode] = useState<TreeNode | null>(null)
 
   function handleSelectNode (node: TreeNode): void {
@@ -15,13 +21,16 @@ function App () {
   }
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h1>🌿 TreeBugger</h1>
-      <h2>{activeNode?.name}</h2>
-      <TreeNodeViewer
-        node={mockTree}
-        onNodeClick={handleSelectNode}
-      />
+    <div className='p-4'>
+      <h1 className='mb-6'>🌿 TreeBugger</h1>
+      <div className='flex'>
+        <TreeNodeViewer
+          className='mr-8'
+          node={mockTree}
+          onNodeClick={handleSelectNode}
+        />
+        {activeNode && <SidePanel node={activeNode} />}
+      </div>
     </div>
   )
 }

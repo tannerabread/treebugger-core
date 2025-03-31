@@ -8,13 +8,12 @@ export const mockTree: TreeNode = {
     {
       id: '2',
       name: 'Header',
-      props: { title: 'Treebugger' },
+      props: { title: 'TreeBugger' },
       children: [],
     },
     {
       id: '3',
       name: 'Main',
-      props: {},
       children: [
         {
           id: '4',
@@ -26,6 +25,7 @@ export const mockTree: TreeNode = {
           id: '5',
           name: 'Results',
           props: { items: 5 },
+          state: { loading: false },
           children: [],
         },
       ],
