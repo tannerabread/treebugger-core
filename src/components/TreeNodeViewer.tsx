@@ -6,6 +6,10 @@ type TreeNodeViewerProps = {
    * The TreeNode to be displayed.
    */
   node: TreeNode
+  /**
+   * Optional callback function to be called when a node is clicked.
+   */
+  onNodeClick?: (node: TreeNode) => void
 }
 
 /**
@@ -14,11 +18,15 @@ type TreeNodeViewerProps = {
  * Clicking on a node triggers the onNodeClick callback with the clicked node.
  *
  * @param {TreeNode} node - The current node to display.
+ * @param {(node: TreeNode) => void} [onNodeClick] - Optional callback for when a node is clicked.
  */
-function TreeNodeViewer({ node }: TreeNodeViewerProps) {
+function TreeNodeViewer({ node, onNodeClick }: TreeNodeViewerProps) {
   const [expanded, setExpanded] = useState(true)
 
   function handleNodeClick (): void {
+    if (onNodeClick) {
+      onNodeClick(node)
+    }
     setExpanded(!expanded)
   }
 
@@ -32,6 +40,7 @@ function TreeNodeViewer({ node }: TreeNodeViewerProps) {
         <TreeNodeViewer
           key={child.id}
           node={child}
+          onNodeClick={onNodeClick}
         />
       ))}
     </div>
