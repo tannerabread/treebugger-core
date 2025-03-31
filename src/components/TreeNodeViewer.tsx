@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { TreeNode } from '@data'
+import clsx from 'clsx'
 
 type TreeNodeViewerProps = {
   /**
@@ -31,8 +32,8 @@ function TreeNodeViewer({ node, onNodeClick }: TreeNodeViewerProps) {
   }
 
   return (
-    <div style={{ marginLeft: '1rem', borderLeft: '1px solid gray', paddingLeft: '0.5rem' }}>
-      <div onClick={handleNodeClick}>
+    <div className='ml-4 border-l border-tan-400 pl-2'>
+      <div className={clsx(node.active && 'font-bold text-green-300')} onClick={handleNodeClick}>
         ▶️ {node.name} {node.props && `(${Object.keys(node.props).length} props)`}
       </div>
 

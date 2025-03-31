@@ -6,13 +6,21 @@ import './App.css'
 function App () {
   const [activeNode, setActiveNode] = useState<TreeNode | null>(null)
 
+  function handleSelectNode (node: TreeNode): void {
+    if (activeNode) {
+      activeNode.active = false
+    }
+    node.active = true
+    setActiveNode(node)
+  }
+
   return (
     <div style={{ padding: '1rem' }}>
-      <h1>🌿 Treebugger</h1>
+      <h1>🌿 TreeBugger</h1>
       <h2>{activeNode?.name}</h2>
       <TreeNodeViewer
         node={mockTree}
-        onNodeClick={setActiveNode}
+        onNodeClick={handleSelectNode}
       />
     </div>
   )
