@@ -1,6 +1,6 @@
 import { JSX, useState } from 'react'
 import { SidePanel, TreeNodeBox } from './components'
-import { mockTree, TreeNode } from './data'
+import { mockTree, type TreeNode } from './data'
 import './App.css'
 
 /**
