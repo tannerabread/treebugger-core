@@ -1,5 +1,5 @@
 import { JSX, useState } from 'react'
-import { SidePanel, TreeNodeViewer } from './components'
+import { TreeNodeBox } from './components'
 import { mockTree, TreeNode } from './data'
 import './App.css'
 
@@ -24,12 +24,13 @@ function App (): JSX.Element {
     <div className='p-4'>
       <h1 className='mb-6'>🌿 TreeBugger</h1>
       <div className='flex'>
-        <TreeNodeViewer
+        {/* <TreeNodeViewer
           className='mr-8'
           node={mockTree}
           onNodeClick={handleSelectNode}
         />
-        {activeNode && <SidePanel node={activeNode} />}
+        {activeNode && <SidePanel node={activeNode} />} */}
+        <TreeNodeBox node={mockTree} />
       </div>
     </div>
   )
